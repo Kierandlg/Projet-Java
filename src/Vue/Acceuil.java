@@ -116,6 +116,7 @@ public class Acceuil extends JFrame implements ActionListener{
 	private JTable tableDiscipline;
 	private final JButton btnAjouterDiscipline = new JButton("Ajouter Discipline ");
 	private final JButton btnNewButton = new JButton("Supprimer");
+	private final JButton suppclasse = new JButton("SupprimerClasse");
 
 	/**
 	 * Launch the application.
@@ -312,7 +313,7 @@ public class Acceuil extends JFrame implements ActionListener{
 		ongletEnseignant.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(70, 42, 747, 447);
+		scrollPane_1.setBounds(70, 42, 747, 408);
 		ongletEnseignant.add(scrollPane_1);
 		
 		
@@ -321,13 +322,21 @@ public class Acceuil extends JFrame implements ActionListener{
 		tableens.getColumnModel().getColumn(1).setPreferredWidth(165);
 		tableens.getColumnModel().getColumn(2).setPreferredWidth(201);
 		scrollPane_1.setViewportView(tableens);
+		btnAjouterEnseignant.setBounds(37, 475, 211, 35);
+		ongletEnseignant.add(btnAjouterEnseignant);
+		btnAjouterEnseignant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				AjoutEnseignant ajoutEnseignant=new AjoutEnseignant(model2,arrayens);
+			}
+		});
 		
 		
 		tabbedPane.addTab("Classe", null, OngletClasse, null);
 		OngletClasse.setLayout(null);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(64, 21, 747, 447);
+		scrollPane_2.setBounds(64, 21, 747, 420);
 		OngletClasse.add(scrollPane_2);
 		
 		
@@ -340,6 +349,30 @@ public class Acceuil extends JFrame implements ActionListener{
 		tableclasse.getColumnModel().getColumn(1).setPreferredWidth(147);
 		tableclasse.getColumnModel().getColumn(2).setPreferredWidth(193);
 		scrollPane_2.setViewportView(tableclasse);
+		btnAjouterClasse.setBounds(42, 477, 165, 35);
+		OngletClasse.add(btnAjouterClasse);
+		suppclasse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				int Num=tableclasse.getSelectedRow();
+				if(arrayclasse.get(Num).getarrayeleve().isEmpty() && arrayclasse.get(Num).get_arrayens().isEmpty() )
+				{
+					ClasseDAO.delete(arrayclasse.get(Num));
+					model3.removeRow(Num);
+				}
+		 		
+			}
+		});
+		suppclasse.setEnabled(false);
+		suppclasse.setBounds(243, 477, 139, 35);
+		
+		OngletClasse.add(suppclasse);
+		btnAjouterClasse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AjoutClasse ajoutClasse= new AjoutClasse(model3, arrayclasse);
+			}
+		});
 		//on les met dans le tableau
 		tableeleve=new JTable(model);
 		tableeleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -350,7 +383,7 @@ public class Acceuil extends JFrame implements ActionListener{
 		ongletEleve.setLayout(null);
 		
 		
-		scrollPane.setBounds(42, 21, 782, 483);
+		scrollPane.setBounds(42, 21, 782, 425);
 		ongletEleve.add(scrollPane);
 		
 		
@@ -360,6 +393,14 @@ public class Acceuil extends JFrame implements ActionListener{
 		tableeleve.getColumnModel().getColumn(2).setPreferredWidth(87);
 		tableeleve.getColumnModel().getColumn(3).setPreferredWidth(169);
 		scrollPane.setViewportView(tableeleve);
+		btnAjouterEtudiant.setBounds(25, 479, 185, 35);
+		ongletEleve.add(btnAjouterEtudiant);
+		btnAjouterEtudiant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AjoutEtudiant ajoutEtudiant=new AjoutEtudiant(model,arrayeleve);
+			}
+		});
 		
 		tabbedPane.addTab("Niveau", null, ongletNiveau, null);
 		ongletNiveau.setLayout(null);
@@ -460,33 +501,6 @@ public class Acceuil extends JFrame implements ActionListener{
 		searchField.setBounds(362, 837, 431, 32);
 		container.add(searchField);
 		searchField.setColumns(10);
-		btnAjouterEtudiant.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				AjoutEtudiant ajoutEtudiant=new AjoutEtudiant(model,arrayeleve);
-			}
-		});
-		btnAjouterEtudiant.setBounds(56, 726, 185, 35);
-		
-		container.add(btnAjouterEtudiant);
-		btnAjouterEnseignant.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				AjoutEnseignant ajoutEnseignant=new AjoutEnseignant(model2,arrayens);
-			}
-		});
-		btnAjouterEnseignant.setBounds(277, 726, 211, 35);
-		
-		container.add(btnAjouterEnseignant);
-		btnAjouterClasse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				AjoutClasse ajoutClasse= new AjoutClasse(model3, arrayclasse);
-			}
-		});
-		
-		btnAjouterClasse.setBounds(531, 726, 165, 35);
-		
-		container.add(btnAjouterClasse);
 	}
 	
 	
@@ -724,6 +738,15 @@ public class Acceuil extends JFrame implements ActionListener{
 	    		int NumLigne = tableclasse.getSelectedRow();
 	    		 arrayclasse.set(NumLigne, ClasseDAO.find(arrayclasse.get(NumLigne).get_id()));
 	        infoclasse= new infoClasse(arrayclasse.get(NumLigne)); 
+	       
+			if(NumLigne<0 && arrayclasse.get(NumLigne).get_arrayens().isEmpty() )
+			{
+				suppclasse.setEnabled(false);
+			}
+			else
+			{
+				suppclasse.setEnabled(true);
+			}
 	    	}
 	    	
 	    	//onglet Eleve

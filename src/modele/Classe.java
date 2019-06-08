@@ -60,6 +60,10 @@ public class Classe {
     {
     	this.arrayEnseignant.add(en); 
     }
+    public  ArrayList<Enseignant > get_arrayens()
+    {
+    	return this.arrayEnseignant;
+    }
     
     public void setannescolaire(String str)
     {

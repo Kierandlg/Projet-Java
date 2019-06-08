@@ -114,6 +114,24 @@ public class AjoutEtudiant {
 		TDcomboBox.setBounds(239, 279, 186, 32);
 		frame.getContentPane().add(TDcomboBox);
 		
+		
+		
+		JLabel lblAjourDunEtudiant = new JLabel("Ajo\u00FBt d'un Etudiant");
+		lblAjourDunEtudiant.setForeground(Color.WHITE);
+		lblAjourDunEtudiant.setBackground(Color.BLACK);
+		lblAjourDunEtudiant.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 28));
+		lblAjourDunEtudiant.setBounds(162, 25, 334, 56);
+		frame.getContentPane().add(lblAjourDunEtudiant);
+		
+		JLabel lblUrlPhoto = new JLabel("URL Photo");
+		lblUrlPhoto.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblUrlPhoto.setBounds(90, 349, 92, 26);
+		frame.getContentPane().add(lblUrlPhoto);
+		
+		textFieldphoto = new JTextField();
+		textFieldphoto.setColumns(10);
+		textFieldphoto.setBounds(239, 343, 186, 32);
+		frame.getContentPane().add(textFieldphoto);
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -123,7 +141,7 @@ public class AjoutEtudiant {
 						&& TDcomboBox.getSelectedItem()!=null
 						&& NiveaucomboBox.getSelectedItem()!=null)
 				{
-			
+					System.out.println(textFieldphoto.getText());
 				Eleve eleve=new Eleve(0,NomField.getText(),PrenomField.getText(),textFieldphoto.getText());
 				eleve.setCalsse(((String)TDcomboBox.getSelectedItem()).substring(0, 3));
 				eleve.setniveau((String)NiveaucomboBox.getSelectedItem());
@@ -147,22 +165,5 @@ public class AjoutEtudiant {
 		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAjouter.setBounds(463, 403, 141, 35);
 		frame.getContentPane().add(btnAjouter);
-		
-		JLabel lblAjourDunEtudiant = new JLabel("Ajo\u00FBt d'un Etudiant");
-		lblAjourDunEtudiant.setForeground(Color.WHITE);
-		lblAjourDunEtudiant.setBackground(Color.BLACK);
-		lblAjourDunEtudiant.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 28));
-		lblAjourDunEtudiant.setBounds(162, 25, 334, 56);
-		frame.getContentPane().add(lblAjourDunEtudiant);
-		
-		JLabel lblUrlPhoto = new JLabel("URL Photo");
-		lblUrlPhoto.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblUrlPhoto.setBounds(90, 349, 92, 26);
-		frame.getContentPane().add(lblUrlPhoto);
-		
-		textFieldphoto = new JTextField();
-		textFieldphoto.setColumns(10);
-		textFieldphoto.setBounds(239, 343, 186, 32);
-		frame.getContentPane().add(textFieldphoto);
 	}
 }

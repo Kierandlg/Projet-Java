@@ -104,7 +104,7 @@ public class AjoutEnseignant {
 					&& textFieldNom.getText()!=null
 					&& comboBox.getSelectedItem()!=null)
 				{
-				prof=new Enseignant(0,textFieldNom.getText(),textField.getText(),"");
+				prof=new Enseignant(0,textFieldNom.getText(),textField.getText(),textFieldPhoto.getText());
 				prof.setDiscipline((String)comboBox.getSelectedItem());
 				
 				ensdao.insert(prof);

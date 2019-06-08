@@ -25,10 +25,11 @@ public class EnseignantDAO extends DAO<Enseignant>{
 			{	
 				fk_discipline=resultSet.getInt("id");
 				
-				PreparedStatement prepare =this.conect.preparestatement("INSERT INTO Personne (nom,prenom,type) VALUES (?,?,?)");	 
+				PreparedStatement prepare =this.conect.preparestatement("INSERT INTO Personne (nom,prenom,type,photo) VALUES (?,?,?,?)");	 
 		 prepare.setString(1,obj.get_nom());
 		 prepare.setString(2,obj.get_prenom());
 		 prepare.setString(3,"1");
+		 prepare.setString(4,obj.get_photo());
 		 prepare.executeUpdate();
 		 
 		 resultSet=this.conect.executeQuerry("SELECT personne.id FROM personne WHERE nom="+"'"+obj.get_nom()+"'"+" AND prenom="+"'"+obj.get_prenom()+"'"+" AND type=1");

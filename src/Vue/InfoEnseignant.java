@@ -243,7 +243,7 @@ public class InfoEnseignant {
 	    	
 	     if(table.getSelectedRow()<0)
 	     {
-	    	 btnEditerBulletin.setEnabled(true);
+	    	 btnEditerBulletin.setEnabled(false);
 	     }
 	     else {
 	    	 btnEditerBulletin.setEnabled(true);

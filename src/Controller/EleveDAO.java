@@ -38,10 +38,11 @@ public class EleveDAO extends DAO<Eleve> {
 				if(res.first())
 				{	fk_classe=res.getInt("id");
 				
-					 PreparedStatement prepare =this.conect.preparestatement("INSERT INTO Personne (nom,prenom,type) VALUES (?,?,?)");	 
+					 PreparedStatement prepare =this.conect.preparestatement("INSERT INTO Personne (nom,prenom,type,photo) VALUES (?,?,?,?)");	 
 					 prepare.setString(1,obj.get_nom());
 					 prepare.setString(2,obj.get_prenom());
 					 prepare.setString(3,"0");
+					 prepare.setString(4,obj.get_photo());
 					 prepare.executeUpdate();
 					
 					res=this.conect.executeQuerry("SELECT MAX(id) FROM personne");
