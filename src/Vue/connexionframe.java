@@ -25,6 +25,7 @@ public class connexionframe {
 	JLabel passwordlabel = new JLabel("password");
 	JButton ok = new JButton("Connexion");
 	JLabel titre = new JLabel("     ECE-Gestion");
+	Acceuil window ;
 
 
 	/**
@@ -56,10 +57,10 @@ public class connexionframe {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 		
 		
-		container.setBackground(Color.GRAY);
+		container.setBackground(Color.BLACK);
 		frame.getContentPane().add(container, BorderLayout.CENTER);
 		container.setLayout(null);
 		
@@ -72,11 +73,13 @@ public class connexionframe {
 		textFieldpassword.setBounds(170, 132, 114, 20);
 		container.add(textFieldpassword);
 		textFieldpassword.setColumns(10);
+		dbnamlabel.setForeground(Color.WHITE);
 		
 	
 		dbnamlabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 11));
 		dbnamlabel.setBounds(71, 66, 72, 17);
 		container.add(dbnamlabel);
+		passwordlabel.setForeground(Color.WHITE);
 		
 
 		passwordlabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 11));
@@ -86,7 +89,7 @@ public class connexionframe {
 		
 		ok.setBackground(Color.GRAY);
 		ok.setForeground(Color.RED);
-		ok.setBounds(183, 193, 89, 23);
+		ok.setBounds(170, 187, 104, 33);
 		ok.addActionListener(new validation());
 		container.add(ok);
 		
@@ -107,11 +110,11 @@ class validation implements ActionListener{
     		{
     			JOptionPane.showMessageDialog(frame,"connexion réussie");
     			container.removeAll();
-    			//frame.repaint();
-    			Acc = new Acceuil();
-    			Acc.setVisible(true);
     			
-    			//container.add(pan2);
+    			window = new Acceuil();
+    			
+				frame.dispose();
+    			
     		}
     		else
     		{

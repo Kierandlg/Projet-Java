@@ -42,7 +42,7 @@ public class AjoutDiscipline {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAjoutDiscipline = new JLabel("Ajout Discipline ");

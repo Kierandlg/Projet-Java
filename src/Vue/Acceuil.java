@@ -44,6 +44,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
+import javax.swing.border.BevelBorder;
 /* TODO
  * 
  * 
@@ -139,6 +140,7 @@ public class Acceuil extends JFrame implements ActionListener{
 	 */
 	public Acceuil() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -241,6 +243,8 @@ public class Acceuil extends JFrame implements ActionListener{
 			model2.addRow(rowdata);
 		}
 		tableens = new JTable(model2);
+		tableens.setBackground(Color.WHITE);
+		tableens.setGridColor(Color.BLACK);
 		tableens.addMouseListener(new TableauListener());
 		
 		//recupération des classes 
@@ -295,24 +299,31 @@ public class Acceuil extends JFrame implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		container.setBackground(Color.GRAY);
+		container.setBackground(Color.BLACK);
 		frame.getContentPane().add(container, BorderLayout.CENTER);
 		container.setLayout(null);
+		labelTitre.setForeground(Color.RED);
 		labelTitre.setBounds(454, 21, 67, 35);
 		
 	
 		labelTitre.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 29));
 		container.add(labelTitre);
+		tabbedPane.setBorder(null);
+		tabbedPane.setBackground(Color.GRAY);
+		tabbedPane.setForeground(Color.BLACK);
 		
 		
 		tabbedPane.setBounds(56, 96, 867, 565);
 		container.add(tabbedPane);
+		ongletEnseignant.setBorder(null);
+		ongletEnseignant.setBackground(Color.DARK_GRAY);
 		
 		
 		tabbedPane.addTab("Enseignant", null, ongletEnseignant, null);
 		ongletEnseignant.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBackground(Color.WHITE);
 		scrollPane_1.setBounds(70, 42, 747, 408);
 		ongletEnseignant.add(scrollPane_1);
 		
@@ -322,6 +333,9 @@ public class Acceuil extends JFrame implements ActionListener{
 		tableens.getColumnModel().getColumn(1).setPreferredWidth(165);
 		tableens.getColumnModel().getColumn(2).setPreferredWidth(201);
 		scrollPane_1.setViewportView(tableens);
+		btnAjouterEnseignant.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.WHITE, null, null, null));
+		btnAjouterEnseignant.setForeground(Color.BLACK);
+		btnAjouterEnseignant.setBackground(Color.WHITE);
 		btnAjouterEnseignant.setBounds(37, 475, 211, 35);
 		ongletEnseignant.add(btnAjouterEnseignant);
 		btnAjouterEnseignant.addActionListener(new ActionListener() {
@@ -330,13 +344,14 @@ public class Acceuil extends JFrame implements ActionListener{
 				AjoutEnseignant ajoutEnseignant=new AjoutEnseignant(model2,arrayens);
 			}
 		});
+		OngletClasse.setBackground(Color.DARK_GRAY);
 		
 		
 		tabbedPane.addTab("Classe", null, OngletClasse, null);
 		OngletClasse.setLayout(null);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(64, 21, 747, 420);
+		scrollPane_2.setBounds(70, 32, 728, 412);
 		OngletClasse.add(scrollPane_2);
 		
 		
@@ -377,6 +392,7 @@ public class Acceuil extends JFrame implements ActionListener{
 		tableeleve=new JTable(model);
 		tableeleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableeleve.addMouseListener(new TableauListener());
+		ongletEleve.setBackground(Color.DARK_GRAY);
 		
 		
 		tabbedPane.addTab("Eleves", null, ongletEleve, null);
@@ -401,14 +417,16 @@ public class Acceuil extends JFrame implements ActionListener{
 				AjoutEtudiant ajoutEtudiant=new AjoutEtudiant(model,arrayeleve);
 			}
 		});
+		ongletNiveau.setBackground(Color.DARK_GRAY);
 		
 		tabbedPane.addTab("Niveau", null, ongletNiveau, null);
 		ongletNiveau.setLayout(null);
-		scrollPane_3.setBounds(49, 39, 711, 452);
+		scrollPane_3.setBounds(74, 43, 711, 382);
 		ongletNiveau.add(scrollPane_3);
 		
 		tableniveau.getColumnModel().getColumn(0).setPreferredWidth(131);
 		scrollPane_3.setViewportView(tableniveau);
+		 OngletDiscipline.setBackground(Color.DARK_GRAY);
 		 
 		 tabbedPane.addTab("Discipline", null, OngletDiscipline, null);
 		 OngletDiscipline.setLayout(null);
@@ -440,6 +458,7 @@ public class Acceuil extends JFrame implements ActionListener{
 		 btnNewButton.setBounds(205, 450, 152, 38);
 		 
 		 OngletDiscipline.add(btnNewButton);
+		 ongletReport.setBackground(Color.DARK_GRAY);
 		
 		
 		 tabbedPane.addTab("Reporting", null, ongletReport, null);
@@ -490,6 +509,12 @@ public class Acceuil extends JFrame implements ActionListener{
 	        	        ChartPanel frame1 = new ChartPanel(chart1);
 	        	        panel_1.add(frame1);
 	        	        frame1.setVisible(true);
+		Searchbutton.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.DARK_GRAY, null, null, null));
+		Searchbutton.setFocusable(false);
+		Searchbutton.setFocusTraversalKeysEnabled(false);
+		Searchbutton.setFocusPainted(false);
+		Searchbutton.setForeground(Color.WHITE);
+		Searchbutton.setBackground(Color.DARK_GRAY);
 		
 		
 		

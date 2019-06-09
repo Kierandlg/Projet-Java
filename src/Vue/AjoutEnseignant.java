@@ -50,7 +50,6 @@ public class AjoutEnseignant {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.GRAY);
 		frame.setBounds(100, 100, 597, 429);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAjoutDunEnseignant = new JLabel("Ajout d'un Enseignant");
